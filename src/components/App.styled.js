@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   margin: 0 auto;
-  max-width: 380px;
+  max-width: 480px;
 `;
 
 export const ItemWrapper = styled.ul`

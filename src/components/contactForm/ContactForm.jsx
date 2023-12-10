@@ -11,7 +11,8 @@ import {
 } from './ContactForm.styled';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, contactsSelector } from 'redux/contactsSlice';
+import { contactsSelector } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
 const FormSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short!').required('Name is required'),
@@ -31,9 +32,7 @@ export const ContactForm = () => {
 
   const formSubmitHandler = ({ name, number }) => {
     if (
-      contacts.some(
-        ({ value }) => value.name.toUpperCase() === name.toUpperCase()
-      )
+      contacts.some(items => items.name.toUpperCase() === name.toUpperCase())
     ) {
       alert(`${name} is already  in contact`);
       return;
