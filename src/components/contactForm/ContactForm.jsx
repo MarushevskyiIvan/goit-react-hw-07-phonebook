@@ -2,6 +2,11 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import 'yup-phone-lite';
 
+import { useDispatch, useSelector } from 'react-redux';
+import {} from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
+import { contactsSelector } from 'redux/selectors';
+
 import {
   Error,
   StyledForm,
@@ -10,14 +15,10 @@ import {
   Input,
 } from './ContactForm.styled';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { contactsSelector } from 'redux/contactsSlice';
-import { addContact } from 'redux/operations';
-
 const FormSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short!').required('Name is required'),
   number: Yup.string()
-    .phone('UA', 'Please enter a valid phone number like (067 356 44 54) ')
+    .phone('UA', 'Please enter a valid phone number like (067-356-4454) ')
     .required('A phone number is required'),
 });
 
@@ -62,7 +63,7 @@ export const ContactForm = () => {
           <Input
             name="number"
             type="text"
-            placeholder="067 356 44 54"
+            placeholder="067-356-4454"
             maxLength="13"
           />
           <Error name="number" component="span" />
